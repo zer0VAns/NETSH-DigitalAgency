@@ -14,15 +14,15 @@ export const portfolio: PortfolioItem[] = [
     industry: "Cafetería",
     description: "Sitio de una página con menú digital, ubicación y reservas por WhatsApp.",
     image: "/images/portfolio/coffee.png",
-    demoUrl: "#",
+    demoUrl: "https://landing-coffee-template.vercel.app/",
   },
   {
     id: "la-parrilla",
-    name: "La Parrilla de Diego",
+    name: "La Parrilla del Sur",
     industry: "Restaurante",
-    description: "Menú completo con fotos, horarios y pedidos para delivery.",
+    description: "Menú completo con fotos, precios, etc",
     image: "/images/portfolio/menu.png",
-    demoUrl: "#",
+    demoUrl: "https://menu-template-rust.vercel.app/",
   },
   {
     id: "estudio-fit",
@@ -30,7 +30,7 @@ export const portfolio: PortfolioItem[] = [
     industry: "Gimnasio",
     description: "Landing con planes, horarios de clases y formulario de inscripción.",
     image: "/images/portfolio/estudio-fit.png",
-    demoUrl: "#",
+    demoUrl: "https://gymfit-orcin.vercel.app/",
   },
   {
     id: "barber-house",
@@ -38,6 +38,6 @@ export const portfolio: PortfolioItem[] = [
     industry: "Peluquería",
     description: "Reserva de turnos online y galería de trabajos realizados.",
     image: "/images/portfolio/barber-house.png",
-    demoUrl: "#",
+    demoUrl: "https://barber-house-delta.vercel.app/",
   },
 ];
