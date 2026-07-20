@@ -1,0 +1,30 @@
+---
+import { services } from "../../data/services";
+import IndustryIcon from "../ui/IndustryIcon.astro";
+---
+
+<section id="servicios" class="section container">
+  <div class="max-w-2xl mb-14">
+    <span class="scan-tag inline-flex items-center text-xs font-medium text-blue mb-6" data-reveal>
+      SERVICIOS
+    </span>
+
+    <h2 class="text-3xl md:text-5xl font-semibold text-ink" data-reveal data-reveal-delay="0.1">
+      Todo lo que necesita tu negocio para existir online.
+    </h2>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-group>
+    {services.map((service) => (
+      <article class="bg-white rounded-lg p-7 border border-blue-soft transition-all duration-300 hover:border-blue hover:-translate-y-1 hover:shadow-blue-md">
+        <div class="w-12 h-12 rounded-lg bg-blue-soft flex items-center justify-center text-blue mb-5">
+          <IndustryIcon icon={service.icon} class="w-6 h-6" />
+        </div>
+
+        <h3 class="text-lg font-semibold text-ink mb-2">{service.title}</h3>
+
+        <p class="text-sm text-slate leading-relaxed">{service.description}</p>
+      </article>
+    ))}
+  </div>
+</section>

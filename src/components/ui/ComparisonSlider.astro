@@ -1,0 +1,71 @@
+---
+interface Props {
+  beforeImage: string;
+  afterImage: string;
+  beforeAlt?: string;
+  afterAlt?: string;
+}
+
+const {
+  beforeImage,
+  afterImage,
+  beforeAlt = "Antes",
+  afterAlt = "Después",
+} = Astro.props;
+---
+
+<div
+  class="relative aspect-[4/3] rounded-lg overflow-hidden select-none"
+  data-comparison-slider
+  style="--pos: 50%"
+>
+  <img
+    src={afterImage}
+    alt={afterAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="lazy"
+    draggable="false"
+  />
+  <img
+    src={beforeImage}
+    alt={beforeAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+    style="clip-path: inset(0 calc(100% - var(--pos)) 0 0)"
+    data-ba-before
+    loading="lazy"
+    draggable="false"
+  />
+  <span
+    class="scan-tag absolute top-4 left-4 z-10 bg-white/85 backdrop-blur-sm text-[0.65rem] font-medium text-ink px-2.5 py-1.5 rounded-sm"
+  >
+    ANTES
+  </span>
+  <span
+    class="absolute top-4 right-4 z-10 bg-blue text-white text-[0.65rem] font-mono font-medium px-2.5 py-1.5 rounded-sm"
+  >
+    DESPUÉS
+  </span>
+  <div
+    class="absolute top-0 bottom-0 w-0.5 bg-white pointer-events-none z-10"
+    style="left: var(--pos); transform: translateX(-50%)"
+    data-ba-handle-line
+  >
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-blue-md flex items-center justify-center"
+    >
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2f5eff" stroke-width="2.2" stroke-linecap="round">
+        <polyline points="8 6 3 12 8 18" />
+        <polyline points="16 6 21 12 16 18" />
+      </svg>
+    </div>
+  </div>
+  <input
+    type="range"
+    min="0"
+    max="100"
+    value="50"
+    class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize m-0"
+    aria-label="Deslizar para comparar antes y después"
+    data-ba-input
+  />
+</div>

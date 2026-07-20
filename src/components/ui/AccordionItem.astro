@@ -1,0 +1,45 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  index: number;
+}
+
+const { question, answer, index } = Astro.props;
+---
+
+<div class="border-b border-blue-soft" data-accordion-item>
+  <button
+    type="button"
+    class="w-full flex items-center justify-between gap-4 py-6 text-left group"
+    data-accordion-trigger
+    aria-expanded="false"
+  >
+    <span class="flex items-start gap-4">
+      <span class="font-mono text-xs text-blue mt-1 shrink-0">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <span class="text-base md:text-lg font-medium text-ink group-hover:text-blue transition-colors duration-300">
+        {question}
+      </span>
+    </span>
+
+    <span
+      class="shrink-0 w-8 h-8 rounded-full bg-blue-soft flex items-center justify-center transition-transform duration-300"
+      data-accordion-icon
+    >
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#2f5eff" stroke-width="2.5" stroke-linecap="round">
+        <line x1="12" y1="5" x2="12" y2="19" data-icon-vertical />
+        <line x1="5" y1="12" x2="19" y2="12" />
+      </svg>
+    </span>
+  </button>
+
+  <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out" data-accordion-panel>
+    <div class="overflow-hidden">
+      <p class="text-sm md:text-base text-slate leading-relaxed pb-6 pl-9 max-w-2xl">
+        {answer}
+      </p>
+    </div>
+  </div>
+</div>

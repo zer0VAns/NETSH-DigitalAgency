@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import AboutAgency from "../components/sections/AboutAgency.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import Industries from "../components/sections/Industries.astro";
+import Services from "../components/sections/Services.astro";
+import ProjectIncludes from "../components/sections/ProjectIncludes.astro";
+import Process from "../components/sections/Process.astro";
+import Portfolio from "../components/sections/Portfolio.astro";
+import BeforeAfter from "../components/sections/BeforeAfter.astro";
+import TechStack from "../components/sections/TechStack.astro";
+import Plans from "../components/sections/Plans.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import CTA from "../components/sections/CTA.astro";
+---
+
+<BaseLayout title="NETSH — Digitalizamos tu negocio">
+  <Navbar />
+  <main>
+    <Hero />
+    <AboutAgency />
+    <Testimonials />
+    <Industries />
+    <Services />
+    <ProjectIncludes />
+    <Process />
+    <Portfolio />
+    <TechStack />
+    <Plans />
+    <FAQ />
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

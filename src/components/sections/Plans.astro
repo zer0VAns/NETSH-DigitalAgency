@@ -1,0 +1,99 @@
+---
+import { plans } from "../../data/plans";
+---
+
+<section id="planes" class="section container">
+  <div class="max-w-2xl mx-auto mb-16 text-center">
+    <span class="scan-tag inline-flex items-center justify-center text-xs font-medium text-blue mb-6" data-reveal>
+      PAQUETES
+    </span>
+
+    <h2 class="text-3xl md:text-5xl font-semibold text-ink mb-4" data-reveal data-reveal-delay="0.1">
+      Un paquete para cada etapa de tu negocio.
+    </h2>
+
+    <p class="text-base md:text-lg text-slate" data-reveal data-reveal-delay="0.2">
+      Cada proyecto se ajusta a tu rubro y necesidad — hablemos y armamos el que mejor te sirva.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6 items-start" data-reveal-group>
+    {plans.map((plan) => (
+      <div
+        class:list={[
+          "rounded-lg p-8 flex flex-col h-full transition-all duration-300",
+          plan.featuredStyle === "solid" && "bg-navy text-white shadow-blue-lg md:-translate-y-4",
+          plan.featuredStyle === "soft" && "bg-blue-soft border border-blue/20 shadow-blue-sm",
+          !plan.featured && "bg-white border border-blue-soft hover:border-blue hover:shadow-blue-md",
+        ]}
+      >
+        {plan.featured && (
+          <span
+            class:list={[
+              "font-mono text-[0.65rem] self-start px-2.5 py-1 rounded-sm mb-4",
+              plan.featuredStyle === "solid" ? "text-blue bg-white/10" : "text-blue bg-white",
+            ]}
+          >
+            {plan.featuredLabel}
+          </span>
+        )}
+
+        <h3
+          class:list={[
+            "text-2xl font-semibold mb-2",
+            plan.featuredStyle === "solid" ? "text-white" : "text-ink",
+          ]}
+        >
+          {plan.name}
+        </h3>
+
+        <p
+          class:list={[
+            "text-sm mb-6",
+            plan.featuredStyle === "solid" ? "text-white/70" : "text-slate",
+          ]}
+        >
+          {plan.tagline}
+        </p>
+
+        <ul class="flex flex-col gap-3 mb-8 flex-1">
+          {plan.features.map((feature) => (
+            <li class="flex items-start gap-2.5">
+              <svg
+                class="w-4 h-4 mt-0.5 shrink-0 text-blue"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span
+                class:list={[
+                  "text-sm leading-snug",
+                  plan.featuredStyle === "solid" ? "text-white/90" : "text-ink",
+                ]}
+              >
+                {feature}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="#cta"
+          class:list={[
+            "text-center text-sm font-semibold px-6 py-3 rounded-sm transition-all duration-300",
+            plan.featuredStyle === "solid"
+              ? "bg-blue text-white hover:bg-blue-dark"
+              : "bg-blue-soft text-blue hover:bg-blue hover:text-white",
+          ]}
+        >
+          Consultar este plan
+        </a>
+      </div>
+    ))}
+  </div>
+</section>

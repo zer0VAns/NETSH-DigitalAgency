@@ -1,0 +1,35 @@
+---
+import { team } from "../../data/team";
+---
+
+<section id="equipo" class="section container">
+  <div class="max-w-2xl mb-14">
+    <span class="scan-tag inline-flex items-center text-xs font-medium text-blue mb-6" data-reveal>
+      EL EQUIPO
+    </span>
+
+    <h2 class="text-3xl md:text-5xl font-semibold text-ink" data-reveal data-reveal-delay="0.1">
+      Cuatro personas, un mismo objetivo: tu negocio online.
+    </h2>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" data-reveal-group>
+    {team.map((member) => (
+      <article class="bg-white rounded-lg p-6 shadow-blue-sm border border-blue-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-blue-md">
+        <div class="w-14 h-14 rounded-full bg-blue flex items-center justify-center mb-5">
+          <span class="font-display font-semibold text-white text-lg">
+            {member.initials}
+          </span>
+        </div>
+
+        <h3 class="text-lg font-semibold text-ink mb-1">{member.name}</h3>
+
+        <p class="font-mono text-xs text-blue mb-4">
+          &gt; {member.role}
+        </p>
+
+        <p class="text-sm text-slate leading-relaxed">{member.bio}</p>
+      </article>
+    ))}
+  </div>
+</section>

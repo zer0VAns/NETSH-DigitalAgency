@@ -1,0 +1,87 @@
+---
+import { contact } from "../../data/contact";
+
+const currentYear = new Date().getFullYear();
+
+const footerLinks = [
+  { label: "Servicios", href: "#servicios" },
+  { label: "Proceso", href: "#proceso" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "Planes", href: "#planes" },
+  { label: "FAQ", href: "#faq" },
+];
+---
+
+<footer class="bg-navy text-white border-t border-white/10">
+      <div class="container py-16">
+    <div class="grid md:grid-cols-[1.5fr_1fr_1fr] gap-12 mb-12">
+      <div>
+        <a href="/" class="inline-flex items-center gap-2 font-display font-semibold text-xl text-white mb-4">
+          <span class="w-2.5 h-2.5 rounded-[3px] bg-blue"></span>
+          NET<span class="text-blue">SH</span>
+        </a>
+        <p class="text-sm text-white/60 max-w-xs leading-relaxed">
+          Digitalizamos negocios tradicionales: sitio web, redes sociales e identidad,
+          para que existan tan bien online como en la puerta del local.
+        </p>
+      </div>
+      <div>
+        <p class="font-mono text-xs text-blue mb-4">SECCIONES</p>
+        <ul class="flex flex-col gap-3">
+          {footerLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-white/70 hover:text-white transition-colors duration-300">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="font-mono text-xs text-blue mb-4">CONTACTO</p>
+        <ul class="flex flex-col gap-3">
+          <li>
+            <a
+              href={`https://wa.me/${contact.whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-white/70 hover:text-white transition-colors duration-300"
+            >
+              WhatsApp
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${contact.email}`} class="text-sm text-white/70 hover:text-white transition-colors duration-300">
+              {contact.email}
+            </a>
+          </li>
+          <li>
+            <a
+              href={contact.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-white/70 hover:text-white transition-colors duration-300"
+            >
+              Instagram
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-white/50">
+        © {currentYear} NETSH. Todos los derechos reservados.
+      </p>
+
+      <a
+        href="#hero"
+        class="text-xs text-white/50 hover:text-white transition-colors duration-300 flex items-center gap-1.5"
+      >
+        Volver arriba
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>

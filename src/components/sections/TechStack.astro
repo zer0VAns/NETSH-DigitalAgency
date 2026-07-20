@@ -1,0 +1,44 @@
+---
+import { techstack } from "../../data/techstack";
+
+const loopedTech = [...techstack, ...techstack];
+---
+
+<section id="tecnologias" class="section section--navy overflow-hidden">
+  <div class="container">
+    <div class="max-w-2xl mb-14">
+      <span class="scan-tag inline-flex items-center text-xs font-medium text-blue mb-6" data-reveal>
+        STACK TECNOLÓGICO
+      </span>
+
+      <h2 class="text-3xl md:text-5xl font-semibold" data-reveal data-reveal-delay="0.1">
+        Construido con las herramientas más modernas del mercado.
+      </h2>
+    </div>
+  </div>
+
+  <div class="relative" data-marquee>
+
+    <div class="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-navy to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-navy to-transparent z-10 pointer-events-none"></div>
+
+    <div class="flex w-max" data-marquee-track>
+      {loopedTech.map((tech) => (
+        <div class="flex items-center gap-3 px-8 py-6 shrink-0">
+          <span class="w-2 h-2 rounded-full bg-blue"></span>
+          <span class="font-display text-xl md:text-2xl font-semibold text-white/90 whitespace-nowrap">
+            {tech.name}
+          </span>
+          <span class="font-mono text-[0.65rem] text-blue whitespace-nowrap">
+            {tech.category}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initTechMarquee } from "../../scripts/gsap/techMarquee";
+  initTechMarquee();
+</script>

@@ -1,0 +1,40 @@
+---
+const stats = [
+  { value: 40, suffix: "+", label: "Negocios digitalizados" },
+  { value: 12, suffix: "", label: "Rubros distintos" },
+  { value: 100, suffix: "%", label: "Proyectos entregados a tiempo" },
+];
+---
+
+<section id="nosotros" class="section section--soft">
+  <div class="container">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="scan-tag inline-flex items-center text-xs font-medium text-blue mb-6" data-reveal>
+          QUIÉNES SOMOS
+        </span>
+
+        <h2 class="text-3xl md:text-5xl font-semibold text-ink mb-6" data-reveal data-reveal-delay="0.1">
+          Somos NETSH.<br />
+          Traducimos negocios reales al idioma de internet.
+        </h2>
+
+        <p class="text-base md:text-lg text-slate max-w-lg" data-reveal data-reveal-delay="0.2">
+          Trabajamos con dueños de negocio que saben lo suyo — atender bien, cocinar bien, vender bien —
+          pero que todavía no existen online. Nosotros nos encargamos de la parte digital: sitio web,
+          redes sociales e identidad, para que su negocio se vea tan bien en una pantalla como en la puerta del local.
+        </p>
+      </div>
+      <div class="grid grid-cols-3 gap-6" data-reveal-group>
+        {stats.map((stat) => (
+          <div class="bg-white rounded-lg p-6 md:p-8 shadow-blue-md text-center">
+            <p class="font-display text-3xl md:text-4xl font-bold text-blue mb-2">
+              <span data-counter={stat.value} data-counter-suffix={stat.suffix}>0{stat.suffix}</span>
+            </p>
+            <p class="text-xs md:text-sm text-slate leading-snug">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

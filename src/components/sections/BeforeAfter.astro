@@ -1,0 +1,43 @@
+---
+import { beforeAfterItems } from "../../data/beforeAfter";
+import ComparisonSlider from "../ui/ComparisonSlider.astro";
+---
+
+<section id="transformaciones" class="section container">
+  <div class="max-w-2xl mb-14">
+    <span class="scan-tag inline-flex items-center text-xs font-medium text-blue mb-6" data-reveal>
+      TRANSFORMACIONES REALES
+    </span>
+
+    <h2 class="text-3xl md:text-5xl font-semibold text-ink" data-reveal data-reveal-delay="0.1">
+      Deslizá para ver el antes y el después.
+    </h2>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-8" data-reveal-group>
+    {beforeAfterItems.map((item) => (
+      <div>
+        <ComparisonSlider
+          beforeImage={item.beforeImage}
+          afterImage={item.afterImage}
+          beforeAlt={`${item.name} antes de digitalizarse`}
+          afterAlt={`${item.name} después de digitalizarse`}
+        />
+        <div class="mt-4">
+          <div class="flex items-center justify-between mb-1.5">
+            <h3 class="text-base font-semibold text-ink">{item.name}</h3>
+            <span class="font-mono text-[0.65rem] text-blue bg-blue-soft px-2 py-1 rounded-sm">
+              {item.industry}
+            </span>
+          </div>
+          <p class="text-sm text-slate leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { initBeforeAfterSliders } from "../../scripts/gsap/beforeAfterSlider";
+  initBeforeAfterSliders();
+</script>

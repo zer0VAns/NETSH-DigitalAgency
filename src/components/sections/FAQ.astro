@@ -1,0 +1,56 @@
+---
+import { faqs } from "../../data/faq";
+import AccordionItem from "../ui/AccordionItem.astro";
+---
+
+<section id="faq" class="section section--soft">
+  <div class="container max-w-3xl">
+    <div class="mb-14">
+      <span class="scan-tag inline-flex items-center text-xs font-medium text-blue mb-6" data-reveal>
+        PREGUNTAS FRECUENTES
+      </span>
+
+      <h2 class="text-3xl md:text-5xl font-semibold text-ink" data-reveal data-reveal-delay="0.1">
+        Dudas comunes, resueltas.
+      </h2>
+    </div>
+
+    <div class="bg-white rounded-lg px-6 md:px-8 shadow-blue-sm" data-reveal>
+      {faqs.map((faq, index) => (
+        <AccordionItem question={faq.question} answer={faq.answer} index={index} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll<HTMLElement>("[data-accordion-item]");
+
+  items.forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>("[data-accordion-trigger]");
+    const panel = item.querySelector<HTMLElement>("[data-accordion-panel]");
+    const icon = item.querySelector<HTMLElement>("[data-accordion-icon]");
+    const verticalLine = item.querySelector<SVGLineElement>("[data-icon-vertical]");
+
+    trigger?.addEventListener("click", () => {
+      const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+      items.forEach((other) => {
+        if (other === item) return;
+        other.querySelector("[data-accordion-trigger]")?.setAttribute("aria-expanded", "false");
+        other.querySelector<HTMLElement>("[data-accordion-panel]")!.style.gridTemplateRows = "0fr";
+        other.querySelector<HTMLElement>("[data-accordion-icon]")!.style.transform = "rotate(0deg)";
+        other.querySelector<SVGLineElement>("[data-icon-vertical]")?.setAttribute("opacity", "1");
+      });
+
+      trigger.setAttribute("aria-expanded", String(!isOpen));
+
+      if (panel) {
+        panel.style.gridTemplateRows = isOpen ? "0fr" : "1fr";
+      }
+      if (icon) {
+        icon.style.transform = isOpen ? "rotate(0deg)" : "rotate(135deg)";
+      }
+    });
+  });
+</script>

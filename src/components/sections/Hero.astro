@@ -1,0 +1,85 @@
+---
+---
+
+<section
+  id="hero"
+  class="relative min-h-screen flex items-center pt-[76px] pb-20 bg-white overflow-hidden"
+>
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-16 items-center">
+    <div>
+      <h1 class="text-[2.75rem] mt-[20px] md:text-6xl lg:text-[5rem] font-bold text-ink mb-6 overflow-hidden" data-hero="title">
+        Tu negocio ya es real.<br />
+        Hagamos que también sea <span class="text-blue">digital</span>.
+      </h1>
+
+      <p
+        class="text-base md:text-lg text-slate max-w-md mb-10 opacity-0 translate-y-4"
+        data-hero="subtitle"
+      >
+        En <strong class="text-ink">NETSH</strong> convertimos negocios sin presencia online en marcas digitales completas: sitio web, redes sociales e identidad — listos mientras vos atendés el mostrador.
+      </p>
+
+      <div class="flex flex-wrap gap-4 opacity-0 translate-y-4" data-hero="ctas">
+        <a
+          href="#cta"
+          class="bg-blue text-white text-sm font-semibold px-6 py-3.5 rounded-sm transition-all duration-300 hover:bg-blue-dark hover:-translate-y-0.5 hover:shadow-blue-md"
+        >
+          Quiero digitalizar mi negocio
+        </a>
+        <a
+          href="#portfolio"
+          class="border border-blue-soft text-ink text-sm font-semibold px-6 py-3.5 rounded-sm transition-all duration-300 hover:border-blue hover:text-blue"
+        >
+          Ver transformaciones
+        </a>
+      </div>
+    </div>
+
+    <div class="relative flex justify-center opacity-0" data-hero="illustration">
+      <svg viewBox="0 0 400 320" class="w-full max-w-[420px]" aria-hidden="true">
+        <g id="heroGrid">
+          {Array.from({ length: 6 }).map((_, row) =>
+            Array.from({ length: 8 }).map((_, col) => (
+              <rect
+                x={col * 48 + 8}
+                y={row * 48 + 8}
+                width="34"
+                height="34"
+                rx="6"
+                fill="#2f5eff"
+                fill-opacity="0"
+                stroke="#c9d6ff"
+                stroke-width="1.5"
+                data-cell
+                data-row={row}
+              />
+            ))
+          )}
+        </g>
+
+        <defs>
+          <linearGradient id="scanGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2f5eff" stop-opacity="0" />
+            <stop offset="50%" stop-color="#2f5eff" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#2f5eff" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <rect
+          id="scanLine"
+          x="0"
+          y="-20"
+          width="400"
+          height="14"
+          fill="url(#scanGradient)"
+        />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initHeroAnimation } from "../../scripts/gsap/heroAnimations";
+  import { onCurtainComplete } from "../../scripts/gsap/curtainReveal";
+
+  onCurtainComplete(() => initHeroAnimation());
+</script>

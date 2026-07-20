@@ -1,0 +1,117 @@
+---
+import { contact } from "../../data/contact";
+---
+
+<section id="cta" class="section section--navy relative overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="container relative">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="scan-tag inline-flex items-center text-xs font-medium text-blue mb-6" data-reveal>
+          EMPECEMOS
+        </span>
+
+        <h2 class="text-3xl md:text-5xl font-semibold text-white mb-6" data-reveal data-reveal-delay="0.1">
+          Tu negocio merece existir online. Hablemos.
+        </h2>
+
+        <p class="text-base md:text-lg text-white/70 max-w-md mb-8" data-reveal data-reveal-delay="0.2">
+          Contanos un poco sobre tu negocio y te contestamos directo por WhatsApp,
+          sin vueltas, para armar el plan que mejor te sirva.
+        </p>
+
+        <div class="flex flex-wrap gap-4" data-reveal data-reveal-delay="0.3">
+          <a
+            href={`https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent("Hola! Quiero digitalizar mi negocio 🚀")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-blue text-white text-sm font-semibold px-6 py-3.5 rounded-sm transition-all duration-300 hover:bg-blue-dark hover:-translate-y-0.5"
+          >
+            Escribir por WhatsApp
+          </a>
+          <a
+            href={`mailto:${contact.email}`}
+            class="inline-flex items-center gap-2 border border-white/20 text-white text-sm font-semibold px-6 py-3.5 rounded-sm transition-all duration-300 hover:border-white/50"
+          >
+            Escribir por mail
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg p-7 md:p-8 shadow-blue-lg" data-reveal data-reveal-delay="0.2">
+        <form id="ctaForm" class="flex flex-col gap-4">
+          <div>
+            <label for="ctaName" class="text-xs font-medium text-slate mb-1.5 block">
+              Tu nombre
+            </label>
+            <input
+              id="ctaName"
+              name="name"
+              type="text"
+              required
+              placeholder="Ej: Marcela Ríos"
+              class="w-full border border-blue-soft rounded-sm px-4 py-3 text-sm text-ink focus:border-blue focus:outline-none transition-colors duration-300"
+            />
+          </div>
+
+          <div>
+            <label for="ctaBusiness" class="text-xs font-medium text-slate mb-1.5 block">
+              Nombre del negocio
+            </label>
+            <input
+              id="ctaBusiness"
+              name="business"
+              type="text"
+              required
+              placeholder="Ej: Café Central"
+              class="w-full border border-blue-soft rounded-sm px-4 py-3 text-sm text-ink focus:border-blue focus:outline-none transition-colors duration-300"
+            />
+          </div>
+
+          <div>
+            <label for="ctaMessage" class="text-xs font-medium text-slate mb-1.5 block">
+              Contanos brevemente qué necesitás
+            </label>
+            <textarea
+              id="ctaMessage"
+              name="message"
+              rows="3"
+              placeholder="Ej: Tengo una cafetería y no tengo redes ni página web todavía"
+              class="w-full border border-blue-soft rounded-sm px-4 py-3 text-sm text-ink focus:border-blue focus:outline-none transition-colors duration-300 resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="mt-2 bg-blue text-white text-sm font-semibold px-6 py-3.5 rounded-sm transition-all duration-300 hover:bg-blue-dark"
+          >
+            Enviar por WhatsApp
+          </button>
+
+          <p class="text-xs text-slate text-center">
+            Se abre WhatsApp con tu mensaje ya armado, vos solo confirmás el envío.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ whatsappNumber: contact.whatsappNumber }}>
+  const form = document.getElementById("ctaForm");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const name = formData.get("name");
+    const business = formData.get("business");
+    const message = formData.get("message");
+
+    const text = `Hola! Soy ${name} de ${business}.\n\n${message || "Quiero digitalizar mi negocio 🚀"}`;
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  });
+</script>
