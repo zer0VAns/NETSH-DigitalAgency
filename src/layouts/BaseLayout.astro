@@ -5,12 +5,20 @@ import CurtainLoader from "../components/ui/CurtainLoader.astro";
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
-  description = "Digitalizamos negocios tradicionales: web, redes sociales e identidad digital.",
+  description = "NETSH digitaliza negocios tradicionales (cafeterías, restaurantes, gimnasios y más): sitio web, redes sociales e identidad digital, listos para vender.",
+  ogImage = "/images/og-cover.jpg",
+  noindex = false,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
+const fullTitle = title.includes("NETSH") ? title : `${title} | NETSH`;
 ---
 
 <!doctype html>
@@ -18,9 +26,47 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO básico -->
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/icons/NETSHcomar.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph (Facebook, Instagram, WhatsApp) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="NETSH" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="es_AR" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0b1130" />
+
+    <!-- Datos estructurados (LocalBusiness) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "NETSH",
+      "description": description,
+      "url": canonicalURL.toString(),
+      "areaServed": "AR",
+      "sameAs": [
+        "https://instagram.com/netsh"
+      ]
+    })} />
   </head>
   <body>
     <CurtainLoader />
