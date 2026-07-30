@@ -9,13 +9,13 @@ export const faqs: FaqItem[] = [
     id: "tiempo",
     question: "¿Cuánto tiempo tarda en estar listo mi sitio?",
     answer:
-      "Depende del plan y la complejidad, pero en general un proyecto Básico está listo en 1 a 2 semanas, y uno Pro o Premium entre 2 y 4 semanas.",
+      "Depende del plan y la complejidad, pero en general un proyecto Básico está listo en 1 a 2 semanas, y uno mas avanzado entre 2 y 4 semanas.",
   },
   {
     id: "no-se-nada",
     question: "No sé nada de tecnología, ¿puedo igual?",
     answer:
-      "Sí, es justamente para quién es esto. Vos te encargás de tu negocio, nosotros de la parte digital — y al final te capacitamos para que sepas manejar lo básico vos mismo.",
+      "Sí, esta pensado para vos.",
   },
   {
     id: "mantenimiento",
@@ -25,9 +25,9 @@ export const faqs: FaqItem[] = [
   },
   {
     id: "redes-propias",
-    question: "Ya tengo Instagram, ¿lo pueden mejorar en vez de crear todo de cero?",
+    question: "Ya tengo un Sitio Web, ¿lo pueden mejorar en vez de crear todo de cero?",
     answer:
-      "Sí, trabajamos tanto con negocios que arrancan de cero como con los que ya tienen algo armado y quieren ordenarlo, mejorarlo o darle una identidad más profesional.",
+      "Depende el caso. Si tienes acceso al codigo fuente, si. Si no, habria que crearla desde cero",
   },
   {
     id: "que-necesito",
@@ -39,6 +39,6 @@ export const faqs: FaqItem[] = [
     id: "rubro-especifico",
     question: "Mi rubro no está en la lista de industrias, ¿igual pueden ayudarme?",
     answer:
-      "Sí, esos son solo los rubros con los que trabajamos más seguido. Si tu negocio es otro tipo, escribinos igual y vemos cómo encarar tu proyecto.",
+      "Sí. Si tu negocio es otro tipo, escribinos igual y vemos cómo encarar tu proyecto.",
   },
 ];
