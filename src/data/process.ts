@@ -39,6 +39,6 @@ export const process: ProcessStep[] = [
     number: "05",
     title: "Soporte",
     description:
-      "Acompañamos los primeros 30 días por si surge cualquier duda o ajuste que necesites.",
+      "Acompañamos los primeros días por si surge cualquier duda o ajuste que necesites.",
   },
 ];
