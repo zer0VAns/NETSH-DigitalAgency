@@ -1,5 +1,5 @@
 export const contact = {
-  whatsappNumber: "5492640000000", 
-  email: "hola@netsh.com.ar",
+  whatsappNumber: "2646253463", 
+  email: "contactnetsh@gmail.com",
   instagram: "https://instagram.com/netsh",
 };
